@@ -231,7 +231,7 @@ var __vue_staticRenderFns__ = [];
 
 const __vue_inject_styles__ = function (inject) {
   if (!inject) return;
-  inject("data-v-52bb9522_0", {
+  inject("data-v-e024ccc4_0", {
     source: ".chart__wrapper{margin:20px 0}.chart__wrap{margin:0}.chart__title{text-align:center;font-weight:700}.chart__source{font-size:12px}.chart__tooltip{position:absolute;pointer-events:none;display:none}.chart__tooltip.active{display:block}.chart__tooltip>div{background:#2b2b2b;color:#fff;padding:6px 10px;border-radius:3px}.chart__axis{font-size:12px;shape-rendering:crispEdges}.chart__grid .domain{stroke:none;fill:none}.chart__grid .tick line{opacity:.2}.chart__label{font-size:12px}.chart .clickable{cursor:pointer}",
     map: undefined,
     media: undefined
@@ -251,7 +251,7 @@ const __vue_is_functional_template__ = false;
 
 /* style inject shadow dom */
 
-const __vue_component__ = normalizeComponent({
+const __vue_component__ = /*#__PURE__*/normalizeComponent({
   render: __vue_render__,
   staticRenderFns: __vue_staticRenderFns__
 }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, createInjector, undefined, undefined);
@@ -772,7 +772,7 @@ const __vue_is_functional_template__$1 = undefined;
 
 /* style inject shadow dom */
 
-const __vue_component__$1 = normalizeComponent({}, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, undefined, undefined, undefined);
+const __vue_component__$1 = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$1, __vue_script__$1, __vue_scope_id__$1, __vue_is_functional_template__$1, __vue_module_identifier__$1, false, undefined, undefined, undefined);
 
 const d3$2 = {
   select,
@@ -988,7 +988,12 @@ class d3linechart extends d3chart {
 
     this.line.x(d => this.xScale(d.x)).y(d => this.yScale(d.y)).curve(d3$2[this.cfg.curve]); // Redraw grid
 
-    this.yGrid.call(d3$2.axisLeft(this.yScale).tickSize(-this.cfg.width).ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat)); // Redraw horizontal axis
+    if (!this.cfg.axis.yFormat || typeof this.cfg.axis.yFormat === 'string') {
+      this.yGrid.call(d3$2.axisLeft(this.yScale).tickSize(-this.cfg.width).ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat));
+    } else {
+      this.yGrid.call(d3$2.axisLeft(this.yScale).tickSize(-this.cfg.width).ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat).tickFormat(this.cfg.axis.yFormat));
+    } // Redraw horizontal axis
+
 
     this.xAxis.attr("transform", `translate(0,${this.cfg.height})`).call(d3$2.axisBottom(this.xScale).tickFormat(this.formatTime).ticks(this.cfg.axis.xTicks, this.cfg.axis.xFormat));
   }
@@ -1113,7 +1118,7 @@ const __vue_is_functional_template__$2 = undefined;
 
 /* style inject shadow dom */
 
-const __vue_component__$2 = normalizeComponent({}, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, false, undefined, undefined, undefined);
+const __vue_component__$2 = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$2, __vue_script__$2, __vue_scope_id__$2, __vue_is_functional_template__$2, __vue_module_identifier__$2, false, undefined, undefined, undefined);
 
 const d3$3 = {
   select,
@@ -1379,7 +1384,7 @@ const __vue_script__$3 = script$3;
 
 const __vue_inject_styles__$3 = function (inject) {
   if (!inject) return;
-  inject("data-v-ac66c84e_0", {
+  inject("data-v-120a3480_0", {
     source: ".chart__wrapper{margin:20px 0}.chart__wrap{margin:0}.chart__title{text-align:center;font-weight:700}.chart__source{font-size:12px}.chart__tooltip{position:absolute;pointer-events:none;display:none}.chart__tooltip.active{display:block}.chart__tooltip>div{background:#2b2b2b;color:#fff;padding:6px 10px;border-radius:3px}.chart__axis{font-size:12px;shape-rendering:crispEdges}.chart__grid .domain{stroke:none;fill:none}.chart__grid .tick line{opacity:.2}.chart__label{font-size:12px}.chart .clickable{cursor:pointer}.chart--piechart .chart__line{fill:none;stroke:#000}",
     map: undefined,
     media: undefined
@@ -1399,7 +1404,7 @@ const __vue_is_functional_template__$3 = undefined;
 
 /* style inject shadow dom */
 
-const __vue_component__$3 = normalizeComponent({}, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, false, createInjector, undefined, undefined);
+const __vue_component__$3 = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$3, __vue_script__$3, __vue_scope_id__$3, __vue_is_functional_template__$3, __vue_module_identifier__$3, false, createInjector, undefined, undefined);
 
 const d3$4 = {
   select,
@@ -1639,7 +1644,7 @@ const __vue_script__$4 = script$4;
 
 const __vue_inject_styles__$4 = function (inject) {
   if (!inject) return;
-  inject("data-v-6b03ba8c_0", {
+  inject("data-v-2fd16900_0", {
     source: ".chart__wrapper{margin:20px 0}.chart__wrap{margin:0}.chart__title{text-align:center;font-weight:700}.chart__source{font-size:12px}.chart__tooltip{position:absolute;pointer-events:none;display:none}.chart__tooltip.active{display:block}.chart__tooltip>div{background:#2b2b2b;color:#fff;padding:6px 10px;border-radius:3px}.chart__axis{font-size:12px;shape-rendering:crispEdges}.chart__grid .domain{stroke:none;fill:none}.chart__grid .tick line{opacity:.2}.chart__label{font-size:12px}.chart .clickable{cursor:pointer}.chart--slopegraph .chart__line--current{stroke-width:2px}",
     map: undefined,
     media: undefined
@@ -1659,7 +1664,7 @@ const __vue_is_functional_template__$4 = undefined;
 
 /* style inject shadow dom */
 
-const __vue_component__$4 = normalizeComponent({}, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, false, createInjector, undefined, undefined);
+const __vue_component__$4 = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$4, __vue_script__$4, __vue_scope_id__$4, __vue_is_functional_template__$4, __vue_module_identifier__$4, false, createInjector, undefined, undefined);
 
 const d3$5 = {
   select,
@@ -1936,7 +1941,7 @@ const __vue_is_functional_template__$5 = undefined;
 
 /* style inject shadow dom */
 
-const __vue_component__$5 = normalizeComponent({}, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, false, undefined, undefined, undefined);
+const __vue_component__$5 = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$5, __vue_script__$5, __vue_scope_id__$5, __vue_is_functional_template__$5, __vue_module_identifier__$5, false, undefined, undefined, undefined);
 
 const d3$6 = {
   select,
@@ -2180,7 +2185,7 @@ const __vue_is_functional_template__$6 = undefined;
 
 /* style inject shadow dom */
 
-const __vue_component__$6 = normalizeComponent({}, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, false, undefined, undefined, undefined);
+const __vue_component__$6 = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$6, __vue_script__$6, __vue_scope_id__$6, __vue_is_functional_template__$6, __vue_module_identifier__$6, false, undefined, undefined, undefined);
 
 const d3$7 = {
   select,
@@ -2386,25 +2391,25 @@ class d3sliceschart extends d3chart {
   */
 
 
-  updateElements() {}
-  /*
-          // PATHS
-          this.itemg.selectAll(".chart__slice")
-              .style('opacity', 0)
-              .data(this.pie(this.data), d => d.data[this.cfg.key])
-              .transition(this.transition)
-              .delay((d,i) => i * this.cfg.transition.duration)
-              .attrTween('d', d => {
-                  const i = d3.interpolate(d.startAngle+0.1, d.endAngle);
-                  return t => {
-                      d.endAngle = i(t); 
-                      return this.arc(d)
-                  }
-              })
-              .style("fill", this.cfg.color.default)
-              .style('opacity', 1);
-  */
-
+  updateElements() {
+    /*
+            // PATHS
+            this.itemg.selectAll(".chart__slice")
+                .style('opacity', 0)
+                .data(this.pie(this.data), d => d.data[this.cfg.key])
+                .transition(this.transition)
+                .delay((d,i) => i * this.cfg.transition.duration)
+                .attrTween('d', d => {
+                    const i = d3.interpolate(d.startAngle+0.1, d.endAngle);
+                    return t => {
+                        d.endAngle = i(t); 
+                        return this.arc(d)
+                    }
+                })
+                .style("fill", this.cfg.color.default)
+                .style('opacity', 1);
+    */
+  }
   /**
   * Remove chart's elements without data
   */
@@ -2450,7 +2455,7 @@ const __vue_script__$7 = script$7;
 
 const __vue_inject_styles__$7 = function (inject) {
   if (!inject) return;
-  inject("data-v-6a52c448_0", {
+  inject("data-v-0f844e74_0", {
     source: ".chart__wrapper{margin:20px 0}.chart__wrap{margin:0}.chart__title{text-align:center;font-weight:700}.chart__source{font-size:12px}.chart__tooltip{position:absolute;pointer-events:none;display:none}.chart__tooltip.active{display:block}.chart__tooltip>div{background:#2b2b2b;color:#fff;padding:6px 10px;border-radius:3px}.chart__axis{font-size:12px;shape-rendering:crispEdges}.chart__grid .domain{stroke:none;fill:none}.chart__grid .tick line{opacity:.2}.chart__label{font-size:12px}.chart .clickable{cursor:pointer}",
     map: undefined,
     media: undefined
@@ -2470,7 +2475,7 @@ const __vue_is_functional_template__$7 = undefined;
 
 /* style inject shadow dom */
 
-const __vue_component__$7 = normalizeComponent({}, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, false, createInjector, undefined, undefined);
+const __vue_component__$7 = /*#__PURE__*/normalizeComponent({}, __vue_inject_styles__$7, __vue_script__$7, __vue_scope_id__$7, __vue_is_functional_template__$7, __vue_module_identifier__$7, false, createInjector, undefined, undefined);
 
 /* eslint-disable import/prefer-default-export */
 

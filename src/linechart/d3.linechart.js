@@ -170,12 +170,23 @@ class d3linechart extends d3chart {
             .curve(d3[this.cfg.curve])
 
         // Redraw grid
-        this.yGrid
-            .call(
-                d3.axisLeft(this.yScale)
-                .tickSize(-this.cfg.width)
-                .ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat)
-            );
+        if (!(this.cfg.axis.yFormat) || (typeof this.cfg.axis.yFormat === 'string')) {
+            this.yGrid
+                .call(
+                    d3.axisLeft(this.yScale)
+                    .tickSize(-this.cfg.width)
+                    .ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat)
+                );
+        }
+        else {
+            this.yGrid
+                .call(
+                    d3.axisLeft(this.yScale)
+                    .tickSize(-this.cfg.width)
+                    .ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat)
+                    .tickFormat(this.cfg.axis.yFormat)
+                );
+        }
 
         // Redraw horizontal axis
         this.xAxis
