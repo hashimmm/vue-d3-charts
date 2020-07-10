@@ -1245,7 +1245,7 @@ var d3linechart = /*#__PURE__*/function (_d3chart) {
       var _this2 = this;
 
       // Calcule vertical scale
-      this.yScale.domain([0, d3$2.max(this.data, function (d) {
+      this.yScale.domain([this.cfg.axis.yMin || 0, this.cfg.axis.yMax || d3$2.max(this.data, function (d) {
         return d.max;
       })]).rangeRound([this.cfg.height, 0]); // Calcule horizontal scale
 

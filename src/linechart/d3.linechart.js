@@ -149,7 +149,7 @@ class d3linechart extends d3chart {
     setScales() {
         // Calcule vertical scale
         this.yScale
-            .domain([0, d3.max(this.data, d => d.max)])
+            .domain([this.cfg.axis.yMin || 0, this.cfg.axis.yMax || d3.max(this.data, d => d.max)])
             .rangeRound([this.cfg.height, 0]);
 
         // Calcule horizontal scale
