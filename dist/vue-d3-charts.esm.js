@@ -1,5 +1,6 @@
 import { select, selectAll } from 'd3-selection';
 import { scaleBand, scaleLinear, scaleOrdinal, scaleTime, scaleSqrt } from 'd3-scale';
+import { range } from 'd3-array';
 import { max, extent, min } from 'd3-array';
 import { transition } from 'd3-transition';
 import { axisBottom, axisLeft } from 'd3-axis';
@@ -501,6 +502,10 @@ class d3chart {
 
 }
 
+const d3$8 = {
+  range,
+};
+
 const d3$1 = {
   select,
   selectAll,
@@ -974,8 +979,12 @@ class d3linechart extends d3chart {
 
 
   setScales() {
+    const yMin = this.cfg.axis.yMin || 0;
+    const yMax = this.cfg.axis.yMax || d3$2.max(this.data, d => d.max);
+    const tickStep = (yMax - yMin) / (this.cfg.axis.yTicks);
+
     // Calcule vertical scale
-    this.yScale.domain([this.cfg.axis.yMin || 0, this.cfg.axis.yMax || d3$2.max(this.data, d => d.max)]).rangeRound([this.cfg.height, 0]); // Calcule horizontal scale
+    this.yScale.domain([yMin, yMax]).rangeRound([this.cfg.height, 0]); // Calcule horizontal scale
 
     this.xScale.domain(d3$2.extent(this.data, d => d.jsdate)).rangeRound([0, this.cfg.width]);
 
@@ -989,9 +998,9 @@ class d3linechart extends d3chart {
     this.line.x(d => this.xScale(d.x)).y(d => this.yScale(d.y)).curve(d3$2[this.cfg.curve]); // Redraw grid
 
     if (!this.cfg.axis.yFormat || typeof this.cfg.axis.yFormat === 'string') {
-      this.yGrid.call(d3$2.axisLeft(this.yScale).tickSize(-this.cfg.width).ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat));
+      this.yGrid.call(d3$2.axisLeft(this.yScale).tickSize(-this.cfg.width).ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat).tickValues(d3$8.range(yMin, yMax + tickStep, tickStep)));
     } else {
-      this.yGrid.call(d3$2.axisLeft(this.yScale).tickSize(-this.cfg.width).ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat).tickFormat(this.cfg.axis.yFormat));
+      this.yGrid.call(d3$2.axisLeft(this.yScale).tickSize(-this.cfg.width).ticks(this.cfg.axis.yTicks, this.cfg.axis.yFormat).tickValues(d3$8.range(yMin, yMax + tickStep, tickStep)).tickFormat(this.cfg.axis.yFormat));
     } // Redraw horizontal axis
 
 
